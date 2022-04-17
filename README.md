@@ -1,4 +1,4 @@
-# Polarity DynamoDB Integration
+# Polarity AWS DynamoDB Integration
 
 The Polarity DynamoDB integration enables querying of your DynamoDB tables hosted in AWS.
 
@@ -38,15 +38,19 @@ Comma delimited list of attribute names to include as part of the summary.  JSON
 
 See the section on [Specifying Attributes](#specifying-attributes) for more information on how to use this option.
 
+### Maximum Number of Summary Items
+
+Number of items to show summary tags for. Defaults to 3. If the limit is reached, a total item count will be shown.
+
 ### Detail Attributes
 
 Comma delimited list of attribute names to include as part of the details block.   JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query.  You can change the label to your detail attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). If left blank, all fields will be displayed as a JSON document.
 
 See the section on [Specifying Attributes](#specifying-attributes) for more information on how to use this option.
 
-### Document Title Attribute
+### Item Title Attribute
 
-Name of the attribute to be used as the document title. JSON dot notation can be used to target nested attributes. Attribute must be returned by your PartiQL query to be displayed. You can change the label to your document attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). For no label, use a colon with no label (i.e., ":<json path>").
+Name of the attribute to be used as the item title. JSON dot notation can be used to target nested attributes. Attribute must be returned by your PartiQL query to be displayed. You can change the label to your item attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). For no label, use a colon with no label (i.e., ":<json path>").
 
 See the section on [Specifying Attributes](#specifying-attributes) for more information on how to use this option.
 
@@ -62,7 +66,7 @@ Attributes can be specified with the following three forms:
 <label>:<type>:<attribute>
 ```
 
-As an example, suppose we have the following document returned by our PartiQL query:
+As an example, suppose we have the following item returned by our PartiQL query:
 
 ```
 {

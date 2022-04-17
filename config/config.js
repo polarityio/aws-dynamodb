@@ -209,6 +209,16 @@ module.exports = {
       adminOnly: true
     },
     {
+      key: 'maxSummaryDocuments',
+      name: 'Maximum Number of Summary Items',
+      description:
+          'Number of items to show summary tags for.  Defaults to 3.  If the limit is reached, a total count will be shown.',
+      default: 3,
+      type: 'number',
+      userCanEdit: false,
+      adminOnly: true
+    },
+    {
       key: 'detailAttributes',
       name: 'Detail Attributes',
       description:
@@ -220,9 +230,9 @@ module.exports = {
     },
     {
       key: 'documentTitleAttribute',
-      name: 'Document Title Attribute',
+      name: 'Item Title Attribute',
       description:
-          'Name of the attribute to be used as the document title. JSON dot notation can be used to target nested attributes. Attribute must be returned by your PartiQL query to be displayed.  You can change the label to your document attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). For no label, use a colon with no label (i.e., ":<json path>").',
+          'Name of the attribute to be used as the item title. JSON dot notation can be used to target nested attributes. Attribute must be returned by your PartiQL query to be displayed.  You can change the label to your document attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). For no label, use a colon with no label (i.e., ":<json path>").',
       default: '',
       type: 'text',
       userCanEdit: false,

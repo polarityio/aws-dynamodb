@@ -217,7 +217,8 @@ function getSummaryTags(results, options) {
   const summaryAttributes = processAttributeOption(options.summaryAttributes);
 
   summaryAttributes.forEach((attributeObj) => {
-    results.forEach((result) => {
+    for (let i = 0; i < options.maxSummaryDocuments && i < results.length; i++) {
+      const result = results[i];
       const tag = get(result, attributeObj.attribute);
       if (tag) {
         if (attributeObj.label) {
@@ -226,12 +227,13 @@ function getSummaryTags(results, options) {
           tags.push(parseAttribute(tag, attributeObj.parser));
         }
       }
-    });
+    }
   });
 
-  if (tags.length === 0) {
-    tags.push(`${result.length} ${result.length === 1 ? 'result' : 'results'}`);
+  if (tags.length === 0 || results.length > options.maxSummaryDocuments) {
+    tags.push(`${results.length} ${results.length === 1 ? 'result' : 'results'}`);
   }
+
   return tags;
 }
 
@@ -255,6 +257,7 @@ async function doLookup(entities, options, cb) {
       const query = new ExecuteStatementCommand(createQuery(entity, options));
       Logger.trace({ query }, 'search partiQL query');
       const result = await dbClient.send(query);
+      Logger.trace({ result }, 'Raw Query Result');
       if (Array.isArray(result.Items) && result.Items.length === 0) {
         return {
           entity,
@@ -264,6 +267,7 @@ async function doLookup(entities, options, cb) {
         // Convert from the dynamodb document to regular javascript object
         // https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/modules/_aws_sdk_util_dynamodb.html#unmarshall-1
         const resultAsJson = result.Items.map(unmarshall);
+        Logger.trace({ resultAsJson }, 'JSON Results');
         return {
           entity,
           data: {
