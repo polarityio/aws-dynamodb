@@ -1,0 +1,14 @@
+{
+  "main": "./integration.js",
+  "name": "DynamoDB",
+  "description": "DynamoDB",
+  "version": "3.0.0",
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.58.0",
+    "@aws-sdk/util-dynamodb": "^3.67.0",
+    "luxon": "^2.3.1",
+    "lodash.get": "^4.4.2",
+    "async": "^3.2.3"
+  }
+}
