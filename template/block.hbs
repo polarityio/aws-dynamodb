@@ -1,0 +1,20 @@
+{{#if details.showAsJson}}
+    <JsonViewer
+      @json={{details.results}}
+      @options={{hash
+        expandedIcon="▼"
+        collapsedIcon="▶︎"
+        collapseDepth=100
+      }}
+    />
+{{else}}
+    {{#each details.results as | document index| }}
+        <h1 class="p-title">{{fa-icon icon="file-alt" fixedWidth=true}} Document #{{index}}</h1>
+        {{#each document as | attribute |}}
+            <div>
+                <span class="p-key">{{attribute.key}}: </span>
+                <span class="p-value">{{attribute.value}}</span>
+            </div>
+        {{/each}}
+    {{/each}}
+{{/if}}
