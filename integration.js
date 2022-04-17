@@ -71,7 +71,7 @@ function errorToPojo(err, detail) {
         name: err.name,
         message: err.message,
         stack: err.stack,
-        detail: detail ? detail : err.detail ? err.detail : 'Unexpected error encountered'
+        detail: err.message ? err.message : err.detail ? err.detail : 'Unexpected error encountered'
       }
     : err;
 }
