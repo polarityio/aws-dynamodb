@@ -9,8 +9,13 @@
     />
 {{else}}
     {{#each details.results as | document index| }}
-        <h1 class="p-title">{{fa-icon icon="file-alt" fixedWidth=true}} Document #{{index}}</h1>
-        {{#each document as | attribute |}}
+        {{#if document.title}}
+            <h1 class="p-title">{{fa-icon icon="file-alt" fixedWidth=true}} {{document.title}}</h1>
+        {{else}}
+            <h1 class="p-title">{{fa-icon icon="file-alt" fixedWidth=true}} Document #{{index}}</h1>
+        {{/if}}
+
+        {{#each document.attributes as | attribute |}}
             <div>
                 <span class="p-key">{{attribute.key}}: </span>
                 <span class="p-value">{{attribute.value}}</span>

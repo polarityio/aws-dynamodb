@@ -152,8 +152,29 @@ function processAttributeOption(attributeOption) {
   return fields;
 }
 
+function getDocumentTitle(result, options) {
+  if (options.documentTitleAttribute.trim().length === 0) {
+    return null;
+  }
+
+  const titleAttributes = processAttributeOption(options.documentTitleAttribute);
+
+  if (titleAttributes[0]) {
+    const attributeObj = titleAttributes[0];
+    const attributeValue = get(result, attributeObj.attribute);
+    const parsedValue = parseAttribute(attributeValue, attributeObj.parser);
+    if (attributeObj.label) {
+      return `${attributeObj.label}: ${parsedValue}`;
+    } else {
+      return parsedValue;
+    }
+  }
+
+  return null;
+}
+
 function getDetails(results, options) {
-  // If not detail attributes are specified then we just display the
+  // If no detail attributes are specified then we just display the
   // whatever DynamoDB returns using the JSON viewer
   if (options.detailAttributes.trim().length === 0) {
     return {
@@ -178,7 +199,10 @@ function getDetails(results, options) {
     });
 
     if (document.length > 0) {
-      details.push(document);
+      details.push({
+        title: getDocumentTitle(result, options),
+        attributes: document
+      });
     }
   });
 
@@ -199,7 +223,7 @@ function getSummaryTags(results, options) {
         if (attributeObj.label) {
           tags.push(`${attributeObj.label}: ${parseAttribute(tag, attributeObj.parser)}`);
         } else {
-          tags.push(parseAttribute(tag, attributeObj.parser))
+          tags.push(parseAttribute(tag, attributeObj.parser));
         }
       }
     });

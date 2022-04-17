@@ -202,7 +202,7 @@ module.exports = {
       key: 'summaryAttributes',
       name: 'Summary Attributes',
       description:
-        'Comma delimited list of attribute names to include as part of the summary.  JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can add a label to your summary attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>").',
+        'Comma delimited list of attribute names to include as part of the summary.  JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can change the label to your summary attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>").  For no label, use a colon with no label (i.e., ":<json path>").',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -212,7 +212,17 @@ module.exports = {
       key: 'detailAttributes',
       name: 'Detail Attributes',
       description:
-        'Comma delimited list of attribute names to include as part of the details block.   JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can add a label to your detail attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). If left blank, all fields will be displayed as a JSON document.',
+        'Comma delimited list of attribute names to include as part of the details block.   JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can change the label to your detail attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). If left blank, all fields will be displayed as a JSON document.',
+      default: '',
+      type: 'text',
+      userCanEdit: false,
+      adminOnly: true
+    },
+    {
+      key: 'documentTitleAttribute',
+      name: 'Document Title Attribute',
+      description:
+          'Name of the attribute to be used as the document title. JSON dot notation can be used to target nested attributes. Attribute must be returned by your PartiQL query to be displayed.  You can change the label to your document attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). For no label, use a colon with no label (i.e., ":<json path>").',
       default: '',
       type: 'text',
       userCanEdit: false,
