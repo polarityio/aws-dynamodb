@@ -291,7 +291,43 @@ async function doLookup(entities, options, cb) {
   cb(null, lookupResults);
 }
 
+function validateOptions(userOptions, cb) {
+  let errors = [];
+  if (
+      typeof userOptions.accessKeyId.value !== 'string' ||
+      (typeof userOptions.accessKeyId.value === 'string' && userOptions.accessKeyId.value.length === 0)
+  ) {
+    errors.push({
+      key: 'accessKeyId',
+      message: 'You must provide a valid AWS Access Key Id'
+    });
+  }
+
+  if (
+      typeof userOptions.secretAccessKey.value !== 'string' ||
+      (typeof userOptions.secretAccessKey.value === 'string' && userOptions.secretAccessKey.value.length === 0)
+  ) {
+    errors.push({
+      key: 'secretAccessKey',
+      message: 'You must provide a valid AWS Secret Access Key'
+    });
+  }
+
+  if (
+      typeof userOptions.query.value !== 'string' ||
+      (typeof userOptions.query.value === 'string' && userOptions.query.value.length === 0)
+  ) {
+    errors.push({
+      key: 'query',
+      message: 'You must provide a valid PartiQL Query'
+    });
+  }
+  
+  cb(null, errors);
+}
+
 module.exports = {
   doLookup,
-  startup
+  startup,
+  validateOptions
 };
