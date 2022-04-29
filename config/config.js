@@ -3,7 +3,7 @@ module.exports = {
   acronym: 'DYNDB',
   logging: { level: 'info' },
   entityTypes: ['IPv4', 'IPv6', 'domain', 'url', 'cve', 'hash', 'email'],
-  description: 'DynamoDB Integration',
+  description: 'Query and display data from AWS DynamoDB tables using the PartiQL query language',
   defaultColor: 'light-gray',
   styles: ['./styles/style.less'],
   block: {
