@@ -2,7 +2,7 @@
   "main": "./integration.js",
   "name": "DynamoDB",
   "description": "DynamoDB",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "private": true,
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.58.0",

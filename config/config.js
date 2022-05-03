@@ -154,7 +154,7 @@ module.exports = {
       key: 'accessKeyId',
       name: 'AWS Access Key Id',
       description:
-        'The access key ID that identifies the security credentials used to authenticate to the specified DynamoDB instance.',
+        'The access key ID that identifies the security credentials used to authenticate to the specified DynamoDB instance.  If left blank, credentials will be loaded from AWS IAM using the credentials provider of the Amazon EC2 instance (if configured in the instance metadata)',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -163,7 +163,7 @@ module.exports = {
     {
       key: 'secretAccessKey',
       name: 'AWS Secret Access Key',
-      description: 'The secret access key that can be used to sign requests.',
+      description: 'The secret access key that can be used to sign requests. If left blank, credentials will be loaded from AWS IAM using the credentials provider of the Amazon EC2 instance (if configured in the instance metadata)',
       default: '',
       type: 'password',
       userCanEdit: false,

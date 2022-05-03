@@ -242,12 +242,16 @@ async function doLookup(entities, options, cb) {
 
   if (optionsHaveChanged(options) || dbClient === null) {
     const clientOptions = {
-      region: options.region.value,
-      credentials: {
+      region: options.region.value
+    };
+
+    if (options.accessKeyId.length > 0 || options.secretAccessKey.length > 0) {
+      clientOptions.credentials = {
         accessKeyId: options.accessKeyId,
         secretAccessKey: options.secretAccessKey
-      }
-    };
+      };
+    }
+
     Logger.trace({ clientOptions }, 'Creating new DynamoDB client');
     dbClient = new DynamoDBClient(clientOptions);
   }
@@ -294,35 +298,15 @@ async function doLookup(entities, options, cb) {
 function validateOptions(userOptions, cb) {
   let errors = [];
   if (
-      typeof userOptions.accessKeyId.value !== 'string' ||
-      (typeof userOptions.accessKeyId.value === 'string' && userOptions.accessKeyId.value.length === 0)
-  ) {
-    errors.push({
-      key: 'accessKeyId',
-      message: 'You must provide a valid AWS Access Key Id'
-    });
-  }
-
-  if (
-      typeof userOptions.secretAccessKey.value !== 'string' ||
-      (typeof userOptions.secretAccessKey.value === 'string' && userOptions.secretAccessKey.value.length === 0)
-  ) {
-    errors.push({
-      key: 'secretAccessKey',
-      message: 'You must provide a valid AWS Secret Access Key'
-    });
-  }
-
-  if (
-      typeof userOptions.query.value !== 'string' ||
-      (typeof userOptions.query.value === 'string' && userOptions.query.value.length === 0)
+    typeof userOptions.query.value !== 'string' ||
+    (typeof userOptions.query.value === 'string' && userOptions.query.value.length === 0)
   ) {
     errors.push({
       key: 'query',
       message: 'You must provide a valid PartiQL Query'
     });
   }
-  
+
   cb(null, errors);
 }
 
