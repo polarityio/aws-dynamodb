@@ -22,4 +22,8 @@
             </div>
         {{/each}}
     {{/each}}
+  {{#if (eq details.results.length 0)}}
+    <h1 class="p-title">{{fa-icon icon="exclamation-triangle" fixedWidth=true}} Possible Integration Configuration Issue</h1>
+    <span>No matching details fields. Check the "Detail Attributes" option to ensure that the specified fields exist in the query results.</span>
+  {{/if}}
 {{/if}}
