@@ -12,6 +12,17 @@ let Logger;
 let originalOptions = {};
 let dbClient = null;
 
+const origWarning = process.emitWarning;
+process.emitWarning = function (...args) {
+  if (Array.isArray(args) && args.length > 0 && args[0].startsWith('The AWS SDK for JavaScript (v3) will')) {
+    // Log the deprecation in our integration logs but don't bubble it up on stderr
+    Logger.warn({ args }, 'Node12 Deprecation Warning');
+  } else {
+    // pass any other warnings through normally
+    return origWarning.apply(process, args);
+  }
+};
+
 function startup(logger) {
   Logger = logger;
 }
