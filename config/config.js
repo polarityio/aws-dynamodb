@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'DynamoDB',
-  acronym: 'DYNDB',
+  name: 'AWS DynamoDB',
+  acronym: 'AWS-DYDB',
   logging: { level: 'info' },
   entityTypes: ['IPv4', 'IPv6', 'domain', 'url', 'cve', 'hash', 'email'],
   description: 'Query and display data from AWS DynamoDB tables using the PartiQL query language',
@@ -202,7 +202,7 @@ module.exports = {
       key: 'summaryAttributes',
       name: 'Summary Attributes',
       description:
-        'Comma delimited list of attribute names to include as part of the summary.  JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can change the label to your summary attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>").  For no label, use a colon with no label (i.e., ":<json path>").',
+        'Comma delimited list of attribute names to include as part of the summary.  JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can change the label to your summary attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>").  For no label, use a colon with no label (i.e., ":<json path>"). Clear cached results after making changes to this option if you would like to see the changes immediately.',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -222,7 +222,7 @@ module.exports = {
       key: 'detailAttributes',
       name: 'Detail Attributes',
       description:
-        'Comma delimited list of attribute names to include as part of the details block.   JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can change the label to your detail attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). If left blank, all fields will be displayed as a JSON document.',
+        'Comma delimited list of attribute names to include as part of the details block.   JSON dot notation can be used to target nested attributes. Attributes must be returned by your PartiQL query to be displayed.  You can change the label to your detail attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). If left blank, all fields will be displayed as a JSON document.  Clear cached results after making changes to this option if you would like to see the changes immediately.',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -232,7 +232,7 @@ module.exports = {
       key: 'documentTitleAttribute',
       name: 'Item Title Attribute',
       description:
-          'Name of the attribute to be used as the item title. JSON dot notation can be used to target nested attributes. Attribute must be returned by your PartiQL query to be displayed.  You can change the label to your document attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). For no label, use a colon with no label (i.e., ":<json path>").',
+          'Name of the attribute to be used as the item title. JSON dot notation can be used to target nested attributes. Attribute must be returned by your PartiQL query to be displayed.  You can change the label to your document attribute by prepending the label to the attribute path and separating it with a colon (i.e., "<label>:<json path>"). For no label, use a colon with no label (i.e., ":<json path>"). Clear cached results after making changes to this option if you would like to see the changes immediately.',
       default: '',
       type: 'text',
       userCanEdit: false,
