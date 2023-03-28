@@ -1,4 +1,5 @@
 {
+  "polarityIntegrationUuid": "fd59c4a0-cce1-11ed-aeee-075d3490155d",
   "name": "AWS DynamoDB",
   "acronym": "AWS-DYDB",
   "logging": {
