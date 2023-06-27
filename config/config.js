@@ -29,13 +29,7 @@ module.exports = {
     ca: '',
     // An HTTP proxy to be used. Supports proxy Auth with Basic Auth, identical to support for
     // the url parameter (by embedding the auth info in the uri)
-    proxy: '',
-    /**
-     * If set to false, the integration will ignore SSL errors.  This will allow the integration to connect
-     * to the servers without valid SSL certificates.  Please note that we do NOT recommending setting this
-     * to false in a production environment.
-     */
-    rejectUnauthorized: true
+    proxy: ""
   },
   options: [
     {
@@ -134,7 +128,7 @@ module.exports = {
         },
         {
           value: 'sa-east-1',
-          display: 'South America (São Paulo)'
+          display: 'South America (SC#o Paulo)'
         },
         {
           value: 'us-gov-east-1',
