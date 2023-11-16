@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "@aws-sdk/client-dynamodb": "3.200.0",
-    "@aws-sdk/util-dynamodb": "3.200.0",
+    "@aws-sdk/util-dynamodb": "3.436.0",
     "@aws-sdk/util-locate-window": "3.188.0",
     "luxon": "^3.1.0",
     "lodash.get": "^4.4.2",
